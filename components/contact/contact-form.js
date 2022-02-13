@@ -24,8 +24,9 @@ const ContactForm = () => {
   const [error, setError] = useState();
 
   useEffect(() => {
+    let timer;
     if (status === "success" || status === "error") {
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         setStatus(null);
         setError(null);
       }, 3000);
@@ -45,6 +46,9 @@ const ContactForm = () => {
         message: message,
       });
       setStatus("success");
+      setMessage('');
+      setEmail("");
+      setName("");
     } catch (error) {
       setError(error.message);
       setStatus("error");
